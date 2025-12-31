@@ -88,7 +88,7 @@
       
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-        background-color: black;
+        background-color: transparent;
         color: #ffffff;
         overflow-x: hidden;
       }
@@ -100,14 +100,15 @@
 .loading-screen {
   position: fixed;
   inset: 0;
-  background: black;
-  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
   display: flex;
   justify-content: center;
   align-items: center;
-
   z-index: 9999;
 }
+
 .logo {
   position: relative;
   font-size: 64px;
@@ -117,7 +118,7 @@
   font-weight: 500;
   font-family: 'Inter', sans-serif;
   text-shadow:
-    0 4px 10px white;
+    0 4px 20px white;
 }
 .shift-x {
   position: relative;
@@ -154,13 +155,13 @@
 }
      </style>
   </head>
-  <body>
+  <body>    
     <!-- React app mounts here -->
   <div id="root"></div>
     
     <div class="loading-screen">
   <div class="logo">
-    VivaMa<span class="shift-x">x</span>
+    MovieMa<span class="shift-x">x</span>
 
     <svg viewBox="0 0 120 120" aria-hidden="true">
       <defs>
@@ -182,14 +183,12 @@
     </svg>
   </div>
 </div>
-
     <script>
       setTimeout(() => {
         const loadingScreen = document.querySelector('.loading-screen');
         if (loadingScreen) {
           loadingScreen.style.opacity = '0';
           loadingScreen.style.transition = 'opacity 0.5s ease';
-
           setTimeout(() => loadingScreen.remove(), 500);
         }
       }, 4000);
@@ -198,8 +197,5 @@
   </body>
 
 </html>
-
-
-
 
 
