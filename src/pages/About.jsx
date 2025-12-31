@@ -63,19 +63,9 @@ const About = () => {
               official platforms and services.
             </p>
             <p>
-              MStream is developed as a demonstration of modern web development practices and is intended 
+              MovieMax is developed as a demonstration of modern web development practices and is intended 
               for educational and entertainment purposes.
             </p>
-          </section>
-
-          <section className="about-section contact-section">
-            <h2>Get In Touch</h2>
-            <p>
-              Have questions, suggestions, or feedback? We'd love to hear from you!
-            </p>
-            <div className="contact-info">
-              <p>🐙 GitHub: <a href="https://github.com/cd-Crypton/mstream" target="_blank" rel="noopener noreferrer">github.com/cd-Crypton/mstream</a></p>
-            </div>
           </section>
         </div>
 
