@@ -88,10 +88,22 @@
       
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-        background-color: white;
+        background-color: transparent;
         color: #ffffff;
         overflow-x: hidden;
       }
+       .loader-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+
+  background: radial-gradient(
+    circle at top,
+    #1a1a1a 0%,
+    #000000 60%
+  );
+       }
+       
       
       #root {
         min-height: 100vh;
@@ -100,13 +112,15 @@
 .loading-screen {
   position: fixed;
   inset: 0;
-  background: rgba(225,225,225,.5);
-  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2;
 }
+
 .logo {
   position: relative;
   font-size: 64px;
@@ -154,6 +168,9 @@
      </style>
   </head>
   <body>
+    
+    <div class="loader-bg"></div>
+    
     <!-- React app mounts here -->
   <div id="root"></div>
     
@@ -197,6 +214,7 @@
   </body>
 
 </html>
+
 
 
 
