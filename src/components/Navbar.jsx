@@ -72,7 +72,6 @@ const Navbar = ({ onSearch, searchResults, onItemClick, isSearching }) => {
           <Link to="/tv-shows" className="nav-link">TV Shows</Link>
           <Link to="/movies" className="nav-link">Movies</Link>
           <Link to="/popular" className="nav-link">Popular</Link>
-          <Link to="/profile.html" className="nav-link">👤</link>
         </div>
 
         <div className="navbar-search-container">
