@@ -15,30 +15,23 @@ export default defineConfig(({ mode }) => {
           globPatterns: [
             '**/*.{js,jsx,css,html,ico,png,jpg,jpeg,webp,svg,woff,woff2,ttf,eot,xml,txt}']
         }
-      }),
-      Sitemap({ 
-        hostname: 'https://moviemaxx.pages.dev/',
-        dynamicRoutes: [
-          '/home',
-          '/movies',
-          '/tv-shows',
-          '/popular',
-          '/watch?type=movie&amp;id=1062722',
-          '/watch?type=movie&amp;id=1197137',
-          '/watch?type=movie&amp;id=1114967',
-          '/watch?type=movie&amp;id=1571470',
-          '/watch?type=movie&amp;id=617126'
-        ],
-        readable: true,
-        robots: [
-          {
-            userAgent: '*',
-            allow: '/',
-            disallow: '/api/',
-            crawlDelay: 2,
-          },
-        ]
-      }),
+      }),Sitemap({ 
+  hostname: 'https://moviemaxx.pages.dev',
+  dynamicRoutes: [
+    '/home',
+    '/movies',
+    '/tv-shows',
+    '/popular',
+    '/watch?type=movie&id=1062722',
+    '/watch?type=movie&id=1197137',
+    '/watch?type=movie&id=1114967',
+    '/watch?type=movie&id=1571470',
+    '/watch?type=movie&id=617126',
+    '/profile.html'
+  ],
+  readable: true,
+  robots: false   // ✅ CRITICAL FIX
+}),
     ],
     resolve: {
       alias: {
