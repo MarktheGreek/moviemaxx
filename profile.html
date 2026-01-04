@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MovieMaxx • Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #050505;
+      color: #fff;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 18px 20px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    header a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 20px;
+    }
+
+    .stat {
+      background: #0f0f0f;
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .stat span {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .section {
+      padding: 10px 20px 30px;
+    }
+
+    .section h2 {
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .movies {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 12px;
+    }
+
+    .movie {
+      background: #111;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform .2s ease;
+    }
+
+    .movie:hover { transform: scale(1.05); }
+
+    .movie img {
+      width: 100%;
+      display: block;
+    }
+
+    .empty {
+      opacity: .6;
+      font-size: 14px;
+      padding: 20px 0;
+    }
+
+    footer {
+      padding: 20px;
+      text-align: center;
+      font-size: 13px;
+      opacity: .4;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">←</a>
+  <h1>Profile</h1>
+</header>
+
+<div class="stats">
+  <div class="stat"><span id="watchedCount">0</span><p>Watched</p></div>
+  <div class="stat"><span id="hoursCount">0</span><p>Hours</p></div>
+  <div class="stat"><span id="continueCount">0</span><p>Continue</p></div>
+</div>
+
+<div class="section">
+  <h2>⏯ Continue Watching</h2>
+  <div class="movies" id="continue"></div>
+</div>
+
+<div class="section">
+  <h2>📜 Watch History</h2>
+  <div class="movies" id="history"></div>
+</div>
+
+<footer>MovieMaxx © 2026</footer>
+
+<script>
+  const watched = JSON.parse(localStorage.getItem('watched')) || [];
+
+  document.getElementById('watchedCount').textContent = watched.length;
+  document.getElementById('hoursCount').textContent = watched.length * 2;
+  document.getElementById('continueCount').textContent = watched.slice(0, 3).length;
+
+  const historyEl = document.getElementById('history');
+  const continueEl = document.getElementById('continue');
+
+  if (!watched.length) {
+    historyEl.innerHTML = '<div class="empty">No movies watched yet</div>';
+  }
+
+  watched.forEach((m, i) => {
+    const card = document.createElement('div');
+    card.className = 'movie';
+    card.innerHTML = `<img src="https://image.tmdb.org/t/p/w300${m.poster}" />`;
+
+    historyEl.appendChild(card);
+    if (i < 3) continueEl.appendChild(card.cloneNode(true));
+  });
+</script>
+
+</body>
+</html>
